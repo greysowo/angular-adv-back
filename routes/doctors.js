@@ -30,12 +30,15 @@ router.post('/',
 
 router.put('/:id',
     [
-        
+        validateJWT,
+        check('name', 'Name is required').not().isEmpty(),
+        validateFields
     ],
     updateDoctor
 );
 
 router.delete('/:id',
+    validateJWT,
     deleteDoctor
 );
 
